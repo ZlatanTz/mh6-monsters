@@ -10,28 +10,25 @@ function App() {
 
   const fetchMonsters = async () => {
     try {
-      console.log('Fetching monsters...'); // Log here
-
-      const response = await axios.get('http://localhost:2501/monsters')
-      setMonsters(response.data)
-      setIsLoading(false)
-    } catch(err){
-      console.error(err)
-      throw err
+      console.log('Fetching monsters...');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/monsters`);
+      setMonsters(response.data);
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err);
+      throw err;
     }
-  }
-
+  };
+  
   const fetchSpecies = async () => {
-    try{
-       const response = await axios.get('http://localhost:2501/species')
-       setSpecies(response.data)
-
-    } catch(err) {
-       console.error(err)
-       throw err;
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/species`);
+      setSpecies(response.data);
+    } catch (err) {
+      console.error(err);
+      throw err;
     }
- 
- }
+  };
 
   useEffect(() => {
     fetchMonsters()
